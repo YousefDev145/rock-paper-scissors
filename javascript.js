@@ -94,7 +94,7 @@ function showScore(playerPoints, computerPoints)
 
 function playGame(numberOfRounds)
 {
-    numberOfRounds = prompt("How many rounds do you want to play? ");
+    numberOfRounds = prompt("How many rounds do you want to play? ", 5);
     for (i = 0; i < numberOfRounds; i++)
     {
         console.log(playRound(getPlayerChoice(), getRandomChoice()));
