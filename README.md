@@ -1,1 +1,2 @@
 # rock-paper-scissors
+Hello everybody! This is my first JavaScript project. I am gonna make a simple rock paper scissors game in the browser console. This is my first step to becoming a JavaScript master!
