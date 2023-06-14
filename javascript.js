@@ -1,26 +1,24 @@
 let playerPoints = 0;
 let computerPoints = 0;
-playGame();
 
-function getPlayerChoice()
-{
-    let playerChoice = prompt("Choose Rock, Paper, or Scissors: ").toLowerCase();
-    if (!(playerChoice == "rock" || playerChoice == "paper" || playerChoice == "scissors"))
-    {
-        playerChoice = prompt("Please type only 'Rock', 'Paper', or 'Scissors'. Check if you mistyped. ");
-    }
-    return playerChoice;
-}
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+const resultsDisplay = document.querySelector('.points');
+const roundDisplay = document.querySelector('.round');
+rockBtn.addEventListener('click', playGame);
+paperBtn.addEventListener('click', playGame);
+scissorsBtn.addEventListener('click', playGame);
 
 function getRandomChoice()
 {
     let choiceNumber = Math.floor(Math.random() * 3 + 1);
     if (choiceNumber == 1)
-        return "rock";
+    return "rock";
     else if (choiceNumber == 2)
-        return "paper";
+    return "paper";
     else
-        return "scissors";
+    return "scissors";
 }
 
 function playRound(playerChoice, computerChoice)
@@ -75,29 +73,23 @@ function playRound(playerChoice, computerChoice)
     }
 }
 
-function showScore(playerPoints, computerPoints)
+function showScore()
 {
-    let score = `Your points: ${playerPoints} \nComputer's points: ${computerPoints}`
-    if (playerPoints == computerPoints)
-    {
-        console.log(`It's a tie. \n${score}`);
-    }
-    else if (playerPoints < computerPoints)
-    {
-        console.log(`You lost. \n${score}`);
-    }
-    else
-    {
-        console.log(`You won. \n${score}`);
-    }
+    let score = `Your points: ${playerPoints} \nComputer's points: ${computerPoints}`;
+    resultsDisplay.textContent = score;
 }
 
-function playGame(numberOfRounds)
+function playGame(e)
 {
-    numberOfRounds = prompt("How many rounds do you want to play? ", 5);
-    for (i = 0; i < numberOfRounds; i++)
-    {
-        console.log(playRound(getPlayerChoice(), getRandomChoice()));
-    }
-    showScore(playerPoints, computerPoints);
+    roundDisplay.textContent = playRound(e.target.id, getRandomChoice());
+    showScore();
+    if (playerPoints == 5 || computerPoints == 5) endGame();
+}
+
+function endGame()
+{
+    rockBtn.removeEventListener('click', playGame);
+    paperBtn.removeEventListener('click', playGame);
+    scissorsBtn.removeEventListener('click', playGame);
+    resultsDisplay.textContent = playerPoints > computerPoints ? 'You win!' : 'You lose!'
 }

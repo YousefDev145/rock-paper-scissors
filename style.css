@@ -1,0 +1,17 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.points, .round
+{
+    text-align: center;
+}
+
+.button-container
+{
+    display: flex;
+    justify-content: space-around;
+}
