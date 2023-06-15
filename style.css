@@ -1,13 +1,43 @@
-body
+html
 {
     display: flex;
+    flex-direction: column;
+}
+
+body
+{
+    background-color: #2F2730;
+    font-family: 'Fantasy', 'Cursive', 'Serif';
+    font-size: 20px;
+    display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: space-around;
 }
 
-.points, .round
+p
+{
+    color: #E966A0;
+}
+
+button
+{
+    background-color: #9575DE;
+    color: #2F2730;
+    border: 5px solid #6554AF;
+    padding: 10px 15px;
+    font-family: 'Fantasy', 'Cursive', 'Serif';
+}
+
+.points-container, .endgame-notes, .round
 {
     text-align: center;
+}
+
+.points-container
+{
+    display: flex;
+    justify-content: space-around;
 }
 
 .button-container

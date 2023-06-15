@@ -4,8 +4,10 @@ let computerPoints = 0;
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
-const resultsDisplay = document.querySelector('.points');
+const playerDisplay = document.querySelector('.player-points');
+const computerDisplay = document.querySelector('.computer-points');
 const roundDisplay = document.querySelector('.round');
+const endgameNotes = document.querySelector('.endgame-notes');
 rockBtn.addEventListener('click', playGame);
 paperBtn.addEventListener('click', playGame);
 scissorsBtn.addEventListener('click', playGame);
@@ -75,8 +77,8 @@ function playRound(playerChoice, computerChoice)
 
 function showScore()
 {
-    let score = `Your points: ${playerPoints} \nComputer's points: ${computerPoints}`;
-    resultsDisplay.textContent = score;
+    playerDisplay.textContent = `Your Points: ${playerPoints}`;
+    computerDisplay.textContent = `Computer's Points: ${computerPoints}`;
 }
 
 function playGame(e)
@@ -91,5 +93,6 @@ function endGame()
     rockBtn.removeEventListener('click', playGame);
     paperBtn.removeEventListener('click', playGame);
     scissorsBtn.removeEventListener('click', playGame);
-    resultsDisplay.textContent = playerPoints > computerPoints ? 'You win!' : 'You lose!'
+    roundDisplay.textContent = playerPoints > computerPoints ? 'You won against the computer!' : 'You lost against the computer!'
+    endgameNotes.textContent = 'Press F5 or refresh the page to restart'
 }
